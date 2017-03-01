@@ -6,12 +6,17 @@ export default class Footer extends React.Component {
   }
   render() {
     let countString
-    if(this.props.todos.length === 1){
-      countString = `${this.props.todos.length} item left`
-    } else{
-      countString = `${this.props.todos.length} items left`
+
+    const activeTodos = this.props.todos.filter((item) => item.status === false)
+    if(activeTodos.length === 0){
+      return (<div></div>)
     }
-    
+    else if(activeTodos.length === 1){
+      countString = `${activeTodos.length} item left`
+    } else{
+      countString = `${activeTodos.length} items left`
+    }
+
     return (
       <footer className="footer" id="todoapp-footer">
         <span className="todo-count" id="todo-count">{countString}</span>

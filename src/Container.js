@@ -70,7 +70,6 @@ export default class Container extends React.Component {
         newItems = this.state.todos
         break
     }
-    const activeTodos = this.state.todos.filter((item) => item.status === false)
     return (
       <section className="todoapp">
         <Header update={this.update} todos={this.state.todos} />
@@ -78,7 +77,7 @@ export default class Container extends React.Component {
           todos={newItems}
           updateTodo={this.updateTodo.bind(this)}
           deleteTodo={this.deleteTodo.bind(this)} />
-        <Footer clearCompleted={this.clearCompleted.bind(this)} todos={activeTodos}/>
+        <Footer clearCompleted={this.clearCompleted.bind(this)} todos={this.state.todos}/>
       </section>
     )
   }
