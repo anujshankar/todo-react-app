@@ -18,12 +18,10 @@ export default class Header extends React.Component {
       return
     }
     event.preventDefault();
-    // console.log(this.state)
     const val = this.state.newTodo.trim()
 
     if (val) {
       api.insertTask(val).then((result) => {
-        // console.log(result)
         return result.json()
       })
         .then((result) => {
@@ -34,7 +32,6 @@ export default class Header extends React.Component {
             status: false
           }
           todos.push(data)
-          // console.log(todos)
           this.props.update(todos)
           this.setState({ newTodo: '' })
         })
@@ -49,11 +46,8 @@ export default class Header extends React.Component {
     api.updateAll(checked).then(() => {
       const todos = this.props.todos
       todos.forEach(function (element) {
-        console.log('Before:', element.status)
         element.status = checked
-        console.log('After:', element.status)
       })
-      console.log(todos)
       this.props.update(todos)
     })
       .catch((err) => {
@@ -62,11 +56,18 @@ export default class Header extends React.Component {
   }
 
   render() {
-    const toggleAllStyleClass = this.props.todos.length > 0 ? 'toggle-all unhide' : 'toggle-all';
+    const toggleAllStyleClass = this.props.todos.length > 0 ? 'toggle-all unhide' : 'toggle-all'
+
+    const checkAll = this.props.todos.every((item) => item.status === true) ? 'checked' : ''
 
     return (
       <header className="header">
-        <input className={toggleAllStyleClass} type="checkbox" id="toggle-all" onClick={this.toggleAll.bind(this)} />
+        <input
+          className={toggleAllStyleClass}
+          type="checkbox"
+          id="toggle-all"
+          checked={checkAll}
+          onChange={this.toggleAll.bind(this)} />
         <input
           className="new-todo"
           placeholder="What needs to be done?"
