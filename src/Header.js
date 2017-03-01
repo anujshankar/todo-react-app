@@ -2,22 +2,22 @@ import React from 'react'
 import api from './functionalities'
 
 export default class Header extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       newTodo: ''
     }
   }
 
-  handleChange(event) {
-    this.setState({ newTodo: event.target.value });
+  handleChange (event) {
+    this.setState({ newTodo: event.target.value })
   }
 
-  handleNewTodoKeyDown(event) {
+  handleNewTodoKeyDown (event) {
     if (event.keyCode !== 13) {
       return
     }
-    event.preventDefault();
+    event.preventDefault()
     const val = this.state.newTodo.trim()
 
     if (val) {
@@ -41,7 +41,7 @@ export default class Header extends React.Component {
     }
   }
 
-  toggleAll(event) {
+  toggleAll (event) {
     const checked = event.target.checked
     api.updateAll(checked).then(() => {
       const todos = this.props.todos
@@ -55,7 +55,7 @@ export default class Header extends React.Component {
       })
   }
 
-  render() {
+  render () {
     const toggleAllStyleClass = this.props.todos.length > 0 ? 'toggle-all unhide' : 'toggle-all'
 
     const checkAll = this.props.todos.every((item) => item.status === true) ? 'checked' : ''

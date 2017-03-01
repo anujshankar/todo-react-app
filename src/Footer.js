@@ -2,10 +2,10 @@ import React from 'react'
 import {Link, IndexLink} from 'react-router'
 
 export default class Footer extends React.Component {
-  clearCompleted() {
+  clearCompleted () {
     this.props.clearCompleted()
   }
-  render() {
+  render () {
     let countString
 
     const activeTodos = this.props.todos.filter((item) => item.status === false)
@@ -14,7 +14,7 @@ export default class Footer extends React.Component {
     if (this.props.todos.length === 0) {
       return (<div></div>)
     }
-    
+
     if (activeTodos.length === 1) {
       countString = `${activeTodos.length} item left`
     } else {

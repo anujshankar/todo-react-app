@@ -1,37 +1,37 @@
 import React from 'react'
 
 export default class Todo extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       isEditing: false
     }
   }
 
-  onStatusChange(e) {
+  onStatusChange (e) {
     const status = e.target.checked
     this.props.updateTodo(this.props.todo.id, this.props.todo.description, status)
   }
 
-  onDelete() {
+  onDelete () {
     this.props.deleteTodo(this.props.todo.id)
   }
 
-  modeChange() {
+  modeChange () {
     this.setState({ isEditing: true })
   }
 
-  onExitEdit() {
+  onExitEdit () {
     this.setState({ isEditing: false })
   }
 
-  updateTextBox(e) {
+  updateTextBox (e) {
     const description = e.target.value
     this.props.updateTodo(this.props.todo.id, description, this.props.todo.status)
     this.setState({ isEditing: false })
   }
 
-  keyPressed(e) {
+  keyPressed (e) {
     if (e.keyCode === 13) {
       this.updateTextBox(e)
     }
@@ -41,7 +41,7 @@ export default class Todo extends React.Component {
     }
   }
 
-  render() {
+  render () {
     console.log('Render Todo')
     let inputTextClass = 'read-only '
     if (this.state.isEditing) inputTextClass = 'edit'

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Container from './Container'
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <div className="app">
       <header>

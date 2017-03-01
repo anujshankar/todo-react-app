@@ -5,7 +5,7 @@ import Footer from './Footer'
 import api from './functionalities'
 
 export default class Container extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       todos: []
@@ -13,11 +13,11 @@ export default class Container extends React.Component {
     this.update = this.update.bind(this)
   }
 
-  update(todos) {
+  update (todos) {
     this.setState({ todos: todos })
   }
 
-  updateTodo(id, description, status) {
+  updateTodo (id, description, status) {
     api.updateTask(id, description, status)
       .then(() => {
         const updatedTodos = this.state.todos.map((item) => {
@@ -31,7 +31,7 @@ export default class Container extends React.Component {
       })
   }
 
-  deleteTodo(id) {
+  deleteTodo (id) {
     api.deleteTask(id)
       .then(() => {
         const updatedTodos = this.state.todos.filter((item) => {
@@ -44,7 +44,7 @@ export default class Container extends React.Component {
       })
   }
 
-  clearCompleted() {
+  clearCompleted () {
     api.deleteCompleted()
       .then(() => {
         const updatedTodos = this.state.todos.filter((item) => {
@@ -57,7 +57,7 @@ export default class Container extends React.Component {
       })
   }
 
-  render() {
+  render () {
     let newItems
     switch (location.hash) {
       case '#/active':
@@ -82,7 +82,7 @@ export default class Container extends React.Component {
     )
   }
 
-  componentDidMount() {
+  componentDidMount () {
     api.readTasks()
       .then((result) => {
         return result.json()
