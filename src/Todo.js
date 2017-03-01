@@ -42,7 +42,7 @@ export default class Todo extends React.Component {
   }
 
   render () {
-    console.log('Render Todo')
+    // console.log('Render Todo')
     let inputTextClass = 'read-only '
     if (this.state.isEditing) inputTextClass = 'edit'
     else {

@@ -4,16 +4,16 @@ const sequelize = new Sequelize('postgres://anujshankar:t7@localhost:5432/' + db
 
 console.log(dbname)
 
-function readFromDB() {
+function readFromDB () {
   return sequelize.query(`SELECT id,description,status FROM tasks ORDER BY id;`)
 }
 
-function insertInDB(insertString) {
+function insertInDB (insertString) {
   return sequelize.query(`INSERT INTO TASKS (DESCRIPTION)
    VALUES(?) RETURNING ID;`, { replacements: [insertString] })
 }
 
-function updateDB(id, description, status = false) {
+function updateDB (id, description, status = false) {
   if (!description) {
     return sequelize.query('UPDATE tasks SET STATUS = ? WHERE id = ?;', { replacements: [status, id] })
   } else {
@@ -21,15 +21,15 @@ function updateDB(id, description, status = false) {
   }
 }
 
-function updateDBAll(status) {
+function updateDBAll (status) {
   return sequelize.query('UPDATE tasks SET STATUS = ?;', { replacements: [status] })
 }
 
-function deleteFromDB(id) {
+function deleteFromDB (id) {
   return sequelize.query('DELETE FROM tasks WHERE ID = ?;', { replacements: [id] })
 }
 
-function deleteSelectedFromDB() {
+function deleteSelectedFromDB () {
   return sequelize.query('DELETE FROM tasks WHERE status=TRUE;')
 }
 
