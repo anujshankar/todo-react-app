@@ -1,5 +1,4 @@
 import React from 'react'
-import api from './functionalities'
 
 export default class Todo extends React.Component {
   constructor() {

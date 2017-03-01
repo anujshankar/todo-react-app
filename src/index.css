@@ -147,6 +147,10 @@ label[for='toggle-all'] {
   display: block;
 }
 
+.hide{
+  display: none;
+}
+
 .todo-list {
 	margin: 0;
 	padding: 0;
