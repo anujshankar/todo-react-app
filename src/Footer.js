@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link, IndexLink} from 'react-router'
 
 export default class Footer extends React.Component {
   clearCompleted() {
@@ -26,9 +27,9 @@ export default class Footer extends React.Component {
       <footer className="footer" id="todoapp-footer">
         <span className="todo-count" id="todo-count">{countString}</span>
         <ul className="filters">
-          <li><a href="#/" className="selected">All</a></li>
-          <li><a href="#/active" className="selected">Active</a></li>
-          <li><a href="#/completed" className="selected">Completed</a></li>
+          <li><IndexLink to="/" activeClassName="selected">All</IndexLink></li>
+          <li><Link to="/active" activeClassName="selected">Active</Link></li>
+          <li><Link to="/completed" activeClassName="selected">Completed</Link></li>
         </ul>
         <button
           className={clearCompletedButtonClass}
